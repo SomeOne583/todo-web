@@ -1,0 +1,52 @@
+<mat-card style="width: 100%; margin-left: 0; height: 100%; background-color: ghostwhite;">
+  <ng-template [ngIf]="action==='/login'" [ngIfElse]="signup">
+    <mat-card>
+      <mat-toolbar color="primary">
+        Acceder
+      </mat-toolbar>
+      <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" placeholder="example@mail.com" #mail>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input matInput type="password" #password>
+        <mat-hint>Debe tener por lo menos 8 caracteres</mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-toolbar>
+        <button mat-flat-button color="primary" (click)="changeAction()">¿No tienes cuenta? Registrate</button>
+        <button mat-raised-button color="accent" style="margin-left: auto;">Iniciar sesión</button>
+      </mat-toolbar>
+    </mat-card>
+  </ng-template>
+</mat-card>
+
+<ng-template #signup>
+  <mat-card>
+    <mat-toolbar color="primary">
+      Crear tu cuenta
+    </mat-toolbar>
+    <mat-form-field appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input matInput type="email" placeholder="example@mail.com" #mail>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" #password>
+      <mat-hint>Debe tener por lo menos 8 caracteres</mat-hint>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="outline">
+      <mat-label>Confirma tu contraseña</mat-label>
+      <input matInput type="password" #password_confirmation>
+    </mat-form-field>
+    <br>
+    <mat-toolbar>
+      <button mat-flat-button color="primary" (click)="changeAction()">¿Ya tienes cuenta? Inicia sesión</button>
+      <button mat-raised-button color="accent" style="margin-left: auto;">Registrarme</button>
+    </mat-toolbar>
+  </mat-card>
+</ng-template>
