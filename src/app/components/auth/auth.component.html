@@ -6,18 +6,19 @@
       </mat-toolbar>
       <mat-form-field appearance="outline">
         <mat-label>Correo</mat-label>
-        <input matInput type="email" placeholder="example@mail.com" #mail>
+        <input matInput [formControl]="emailFormControl" type="email" placeholder="example@mail.com" #mail>
+        <mat-error>Ingresa un email válido</mat-error>
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline">
         <mat-label>Contraseña</mat-label>
-        <input matInput type="password" #password>
-        <mat-hint>Debe tener por lo menos 8 caracteres</mat-hint>
+        <input matInput [formControl]="passwordFormControl" type="password" #password>
+        <mat-error>Debe tener por lo menos 8 caracteres</mat-error>
       </mat-form-field>
       <br>
       <mat-toolbar>
         <button mat-flat-button color="primary" (click)="changeAction()">¿No tienes cuenta? Registrate</button>
-        <button mat-raised-button color="accent" style="margin-left: auto;">Iniciar sesión</button>
+        <button mat-raised-button color="accent" (click)="login(mail.value, password.value)" style="margin-left: auto;">Iniciar sesión</button>
       </mat-toolbar>
     </mat-card>
   </ng-template>
@@ -30,13 +31,14 @@
     </mat-toolbar>
     <mat-form-field appearance="outline">
       <mat-label>Correo</mat-label>
-      <input matInput type="email" placeholder="example@mail.com" #mail>
+      <input matInput [formControl]="emailFormControl" type="email" placeholder="example@mail.com" #mail>
+      <mat-error>Ingresa un email válido</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
-      <input matInput type="password" #password>
-      <mat-hint>Debe tener por lo menos 8 caracteres</mat-hint>
+      <input matInput [formControl]="passwordFormControl" type="password" #password>
+      <mat-error>Debe tener por lo menos 8 caracteres</mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="outline">
@@ -46,7 +48,7 @@
     <br>
     <mat-toolbar>
       <button mat-flat-button color="primary" (click)="changeAction()">¿Ya tienes cuenta? Inicia sesión</button>
-      <button mat-raised-button color="accent" style="margin-left: auto;">Registrarme</button>
+      <button mat-raised-button color="accent" (click)="register(mail.value, password.value, password_confirmation.value)" style="margin-left: auto;">Registrarme</button>
     </mat-toolbar>
   </mat-card>
 </ng-template>
