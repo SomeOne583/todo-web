@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,18 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 export class AuthService {
   url = "https://todo-api-177.herokuapp.com/";
 
-  // httpOptions = {
-  //   headers: new HttpHeaders(`Access-Control-Allow-Origin: ${this.url}login`)
-  // };
-
   constructor(private http: HttpClient) { }
 
-  login(user: object) {
-    return this.http.post(`${this.url}login`, user)
+  register(user: object): Observable<any> {
+    return this.http.post<any>(`${this.url}signup`, user, { observe: 'response'});
+  }
+  
+  login(user: object): Observable<any> {
+    return this.http.post<any>(`${this.url}login`, user, { observe: 'response'});
+  }
+
+  checkLog(token: string): Observable<any> {
+    let http_header = new HttpHeaders({'Authorization': token});    
+    return this.http.post<any>(`${this.url}login`, "", { observe: 'response', headers: http_header})
   }
 }
