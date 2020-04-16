@@ -82,7 +82,7 @@ export class TodoComponent implements OnInit {
     },
     (err) => {
       if (this.task === "") {
-        this._snackBar.open("La tarea no puede estar vacia");
+        this._snackBar.open("La tarea no puede estar vacia", "", {duration: 5000});
       } else {
         console.log(err);
       }
