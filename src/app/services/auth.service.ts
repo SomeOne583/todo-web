@@ -22,4 +22,9 @@ export class AuthService {
     let http_header = new HttpHeaders({'Authorization': token});    
     return this.http.post<any>(`${this.url}login`, "", { observe: 'response', headers: http_header})
   }
+
+  logout(token: string): Observable<any> {
+    let http_header = new HttpHeaders({'Authorization': token});
+    return this.http.delete(`${this.url}logout`, { observe: 'response', headers: http_header })
+  }
 }

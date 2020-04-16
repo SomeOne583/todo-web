@@ -7,23 +7,23 @@
       <mat-card>
         <mat-toolbar color="primary">
           Acceder
-          </mat-toolbar>
-          <mat-form-field appearance="outline">
-            <mat-label>Correo</mat-label>
-            <input matInput [formControl]="emailFormControl" type="email" placeholder="example@mail.com" #mail>
-            <mat-error>Ingresa un email válido</mat-error>
-          </mat-form-field>
-          <br>
-          <mat-form-field appearance="outline">
-            <mat-label>Contraseña</mat-label>
-            <input matInput [formControl]="passwordFormControl" type="password" #password>
-            <mat-error>Debe tener por lo menos 8 caracteres</mat-error>
-          </mat-form-field>
-          <br>
-          <mat-toolbar>
-            <button mat-flat-button color="primary" (click)="changeAction()">¿No tienes cuenta? Registrate</button>
-            <button #login_button mat-raised-button color="accent" (click)="log(mail.value, password.value)" style="margin-left: auto;">Iniciar sesión</button>
-          </mat-toolbar>
+        </mat-toolbar>
+        <mat-form-field appearance="outline">
+          <mat-label>Correo</mat-label>
+          <input matInput [formControl]="emailFormControl" type="email" placeholder="example@mail.com" #mail>
+          <mat-error>Ingresa un email válido</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [formControl]="passwordFormControl" type="password" #password>
+          <mat-error>Debe tener por lo menos 8 caracteres</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-toolbar>
+          <button mat-flat-button color="primary" (click)="changeAction()">¿No tienes cuenta? Registrate</button>
+          <button #login_button mat-raised-button color="accent" (click)="log(mail.value, password.value)" style="margin-left: auto;">Iniciar sesión</button>
+        </mat-toolbar>
       </mat-card>
     </ng-template>
     <ng-template #signup [ngSwitchCase]="'signup'">

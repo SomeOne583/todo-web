@@ -39,7 +39,8 @@ export class AuthComponent implements OnInit {
           "password": password
         }
       }
-      this.authService.register(this.user).subscribe((resp) => {
+      this.authService.register(this.user)
+      .subscribe((resp) => {
         if (resp.body['id'] === null) {
           this._snackBar.open('Ese usuario ya existe', "", { duration: 5000 });
         } else {
@@ -61,7 +62,8 @@ export class AuthComponent implements OnInit {
           "password": password
         }
       }
-      this.authService.login(this.user).subscribe((resp) => {
+      this.authService.login(this.user)
+      .subscribe((resp) => {
         this.token = resp.headers.get('Authorization');
         this.session = resp.body;
         this.action = 'logged';
@@ -78,7 +80,8 @@ export class AuthComponent implements OnInit {
   ngOnInit(): void {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token') || "";
-      this.authService.checkLog(this.token).subscribe((resp) => {
+      this.authService.checkLog(this.token)
+      .subscribe((resp) => {
         this.action = 'logged';
         this.session = resp.body;
       },

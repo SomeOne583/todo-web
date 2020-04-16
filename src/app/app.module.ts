@@ -14,20 +14,26 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
-import { TodoComponent, DialogModel } from './components/todo/todo.component';
+import { TodoComponent, UpdateDialog, NotificationDialog } from './components/todo/todo.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { RouterModule } from '@angular/router';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     TodoComponent,
-    DialogModel,
+    UpdateDialog,
+    NotificationDialog,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +54,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatMenuModule,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
