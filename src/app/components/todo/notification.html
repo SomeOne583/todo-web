@@ -1,0 +1,30 @@
+<h1 mat-dialog-title> Notificaciones </h1>
+<div mat-dialog-content>
+  <table mat-table [dataSource]="notifications" #notificationPanel>
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef style="color: white"> ID </th>
+      <td mat-cell *matCellDef="let row; let i = index;"> {{ i + 1 }} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="notifications">
+      <th mat-header-cell *matHeaderCellDef style="color: white"> Notificaciones </th>
+      <td mat-cell *matCellDef="let notification"> {{ notification.notification }} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef style="color: white"> Limpiar </th>
+      <td mat-cell *matCellDef="let notification; let i = index;">
+        <button mat-icon-button
+                matTooltip="Borrar notificación"
+                (click)="destroyNotification(notification, i)">
+          <mat-icon>
+            delete
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: rgb(103, 58, 183);"></tr> -->
+    <tr mat-row *matRowDef="let notification; columns: displayedColumns;"></tr>
+  </table>
+</div>
