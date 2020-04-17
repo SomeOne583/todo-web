@@ -47,8 +47,6 @@ import { MatBadgeModule } from '@angular/material/badge';
     HttpClientModule,
     MatTableModule,
     MatDialogModule,
-    MatProgressSpinnerModule,
-    MatExpansionModule,
     MatIconModule,
     MatTooltipModule,
     MatPaginatorModule,
