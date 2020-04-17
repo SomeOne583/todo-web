@@ -193,6 +193,11 @@ export class TodoComponent implements OnInit {
         token: this.token
       }
     });
+
+    this.notificationRef.afterClosed()
+    .subscribe((result) => {
+      (this.notifications.length == 0) ? (this.hideMatBadge = true) : (this.hideMatBadge = false);
+    });
   }
 
   applyFilter(event: Event) {
