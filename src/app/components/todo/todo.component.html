@@ -1,17 +1,21 @@
 <mat-card>
   <mat-toolbar color="primary">
     Tareas
-    <button mat-icon-button [matMenuTriggerFor]="menu"
-            matTooltip="Menu"
-            style="margin-left: auto;">
-      <mat-icon>
-        menu
+    <button mat-icon-button
+            matTooltip="Notificaciones"
+            style="margin-left: auto;"
+            (click)="notificationPanel()">
+      <mat-icon matBadge="notifications.length">
+        notifications
       </mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="notificationPanel()"> Notificaciones </button>
-      <button mat-menu-item matTooltip="Cerrar sesión" (click)="logout()"> Cerrar sesión </button>
-    </mat-menu>
+    <button mat-icon-button
+            matTooltip="Cerrar sesión"
+            (click)="logout()">
+      <mat-icon>
+        exit_to_app
+      </mat-icon>
+    </button>
   </mat-toolbar>
   <table mat-table [dataSource]="todosDataSource" #mainTable matSort>
     <ng-container matColumnDef="id">

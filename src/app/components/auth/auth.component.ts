@@ -70,7 +70,6 @@ export class AuthComponent implements OnInit {
         localStorage.setItem('token', this.token);
       },
       (err) => {
-        console.log(err);
         this._snackBar.open("Hay un error en el correo o contraseña", "", { duration: 5000 });
       }
       );
@@ -86,7 +85,6 @@ export class AuthComponent implements OnInit {
         this.session = resp.body;
       },
       (err) => {
-        console.log(err);
         localStorage.removeItem('token');
         this.action = 'login';
       })
