@@ -5,7 +5,9 @@
             matTooltip="Notificaciones"
             style="margin-left: auto;"
             (click)="notificationPanel()">
-      <mat-icon [matBadge]="notifications.length">
+      <mat-icon [matBadge]="notifications.length"
+                matBadgeOverlap="false"
+                [matBadgeHidden]="hideMatBadge">
         notifications
       </mat-icon>
     </button>

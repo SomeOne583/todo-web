@@ -57,6 +57,7 @@ export class TodoComponent implements OnInit {
   notificationRef: MatDialogRef<NotificationDialog>;
   updatedTask: string;
   owner: string;
+  hideMatBadge: boolean = true;
   
   constructor(private location: Location, private todoListService: TodoListService, public dialog: MatDialog, private _snackBar: MatSnackBar,
               private authService: AuthService) {
@@ -220,6 +221,7 @@ export class TodoComponent implements OnInit {
     this.todoListService.getNotifications(this.token)
     .subscribe((resp) => {
       this.notifications = resp.body;
+      (this.notifications.length == 0) ? (this.hideMatBadge = true) : (this.hideMatBadge = false);
     },
     (err) => {
       console.log(err);
