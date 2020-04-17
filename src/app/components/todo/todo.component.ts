@@ -84,8 +84,6 @@ export class TodoComponent implements OnInit {
     (err) => {
       if (this.task === "") {
         this._snackBar.open("La tarea no puede estar vacia", "", {duration: 5000});
-      } else {
-        console.log(err);
       }
     })
   }
@@ -123,55 +121,39 @@ export class TodoComponent implements OnInit {
           });
         }
       }
-    },
-    (err) => {
-      console.log(err);
     });
   }
 
   destroy(todo: Todo, index: number) {
     this.todoListService.destroyTodo(this.token, todo.id)
     .subscribe((resp) => {
-      console.log(resp);
       this.todos.splice(index, 1);
       this.todosDataSource = new MatTableDataSource<Todo>(this.todos);
       this.todosDataSource.paginator = this.paginator;
       this.todosDataSource.sort = this.sort;
       this.table.renderRows();
-    },
-    (err) => {
-      console.log(err);
-    })
+    });
   }
 
   start(todo: Todo) {
     this.todoListService.updateTodoState(this.token, todo.id, "En proceso")
     .subscribe((resp) => {
       todo.state = "En proceso";
-    },
-    (err) => {
-      console.log(err);
-    })
+    });
   }
   
   cancel(todo: Todo) {
     this.todoListService.updateTodoState(this.token, todo.id, "Nueva")
     .subscribe((resp) => {
       todo.state = "Nueva";
-    },
-    (err) => {
-      console.log(err);
-    })
+    });
   }
   
   finish(todo: Todo) {
     this.todoListService.updateTodoState(this.token, todo.id, "Terminada")
     .subscribe((resp) => {
       todo.state = "Terminada";
-    },
-    (err) => {
-      console.log(err);
-    })
+    });
   }
 
   logout() {
@@ -179,9 +161,6 @@ export class TodoComponent implements OnInit {
     .subscribe((resp) => {
       localStorage.removeItem("token");
       window.location.reload();
-    },
-    (err) => {
-      console.log(err);
     });
   }
 
@@ -217,9 +196,6 @@ export class TodoComponent implements OnInit {
       this.todosDataSource = new MatTableDataSource<Todo>(this.todos);
       this.todosDataSource.paginator = this.paginator;
       this.todosDataSource.sort = this.sort;
-    },
-    (err) => {
-      console.log(err);
     });
     this.todosDataSource.paginator = this.paginator;
     this.todosDataSource.sort = this.sort;
@@ -227,9 +203,6 @@ export class TodoComponent implements OnInit {
     .subscribe((resp) => {
       this.notifications = resp.body;
       (this.notifications.length == 0) ? (this.hideMatBadge = true) : (this.hideMatBadge = false);
-    },
-    (err) => {
-      console.log(err);
     });
   }
 }
@@ -266,12 +239,8 @@ export class NotificationDialog {
   destroyNotification(notification: Notification, index: number) {
     this.todoListService.destroyNotification(this.data.token, notification.id)
     .subscribe((resp) => {
-      console.log(resp);
       this.data.notifications.splice(index, 1);
       this.notificationPanel.renderRows();
-    },
-    (err) => {
-      console.log(err);
     });
   }
 }
